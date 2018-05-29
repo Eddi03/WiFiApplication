@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TestApplication</string>
+    <string name="wi_fi">Wi-Fi</string>
+    <string name="wi_fi_off">Wi-Fi OFF</string>
 </resources>
