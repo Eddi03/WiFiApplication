@@ -1,24 +1,19 @@
 package com.android.eddi.testapplication;
 
 import android.annotation.SuppressLint;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothManager;
 import android.content.Context;
-import android.content.Intent;
-import android.net.wifi.ScanResult;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.CompoundButton;
-import android.widget.NumberPicker;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.Formatter;
-import java.util.List;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,11 +21,23 @@ public class MainActivity extends AppCompatActivity {
     Switch aSwitchWiFi;
     WifiManager wifiManager;
     WifiInfo wifiInfo;
+    AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        MobileAds.initialize(this, "ca-app-pub-7620270706326566~2383857128");
+        // ID: ca-app-pub-7620270706326566~1712104987
+        // ID TEST: ca-app-pub-3940256099942544~3347511713
+
+        // ID APP: ca-app-pub-7620270706326566~2383857128
+        // ID: ca-app-pub-7620270706326566/1384516512
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         textViewWiFi = findViewById(R.id.textViewWiFi);
         aSwitchWiFi = findViewById(R.id.switchWiFi);
